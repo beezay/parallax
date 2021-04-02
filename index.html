@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="cursor"></div>
+    <section>
+        <img id="bg" src="./forhtml/bg.png" alt="">
+        <img id="mine" src="./forhtml/mine.png" alt="">
+        <img id="moon" src="./forhtml/moon.png" alt="">
+        <img id="sky" src="./forhtml/sky.png" alt="">
+        <h2 id="heading-text"> My Light </h2>
+    </section>
+
+    <header id="second-header">
+        <div class="heading">
+            This is my Second Header
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, architecto numquam, assumenda laboriosam consequatur, reprehenderit quae minima necessitatibus labore ex enim illo quos id provident nesciunt ab aspernatur? Adipisci, explicabo?</p>
+    </header>
+
+    <script type="text/javascript">
+        let cursor = document.getElementById('cursor')
+        let bg = document.getElementById('bg')
+        let mine = document.getElementById('mine')
+        let moon = document.getElementById('moon')
+        let sky = document.getElementById('sky')
+        let headingText = document.getElementById('heading-text')
+
+        window.addEventListener('scroll', () => {
+            var value = window.scrollY;
+            console.log('Scrolled', value);
+            if (value > 0) {
+                bg.style.top = value * 2 + 'px';
+                moon.style.right = value * 2 + 'px';
+                moon.style.top = value * 5 + 'px';
+                mine.style.left = -value * 0.3 + '%';
+                headingText.style.top = value * 0.3 + '%';
+                headingText.style.left = value * 0.1 + '%';
+                headingText.style.color = '#cecece';
+            }
+        })
+
+        moon.addEventListener('mouseover', ()=> {
+            console.log('Mouse HOver');
+            moon.style.top = '20%';
+        })
+
+        document.addEventListener('mousemove', (e)=> {
+            let x = e.clientX
+            let y = e.clientY
+            cursor.style.left = x + 'px'
+            cursor.style.top = y + 'px'
+        })
+    </script>
+
+</body>
+
+</html>
